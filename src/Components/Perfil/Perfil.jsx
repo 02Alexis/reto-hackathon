@@ -1,7 +1,10 @@
+import CardPerfil from "../CardPerfil/CardPerfil"
 
 const Perfil = () => {
   return (
-    <div>Perfil</div>
+    <>
+      <CardPerfil/>
+    </>
   )
 }
 
