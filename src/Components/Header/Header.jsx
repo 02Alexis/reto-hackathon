@@ -7,6 +7,7 @@ import Navbar from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import ModalNavbar from "../ModalNavbar/ModalNavbar";
+import SocialMediaButton from "../SocialMediaButton/SocialMediaButton";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -67,6 +68,10 @@ const Header = () => {
       </div>
 
       <div ref={menu} className="custom-menu-overlay" />
+
+      <div className="social-media-fixed">
+        <SocialMediaButton />
+      </div>
     </header>
   );
 };
