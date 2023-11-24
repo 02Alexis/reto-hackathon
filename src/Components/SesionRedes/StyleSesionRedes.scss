@@ -1,0 +1,35 @@
+.sesionRedes{
+    width: 400px;
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   gap: 10px;
+   color:  rgb(199, 197, 197);
+   &__line{
+    width: 400px;
+    height: 1px;
+    background-color: gainsboro;
+   }
+  
+   &__redes{
+    display: flex;
+    justify-content: space-between;
+    &--button{
+        width: 100px;
+        padding: 5px;
+        background-color: #656565;
+        color: #eee8e8;
+        border-radius: 4px;
+        border: none;
+        font-size: 0.9rem;
+        cursor: pointer;
+        &:hover{
+            border: 1px solid #eee8e8;
+            color: #67AE12;
+            background-color: transparent;
+        }
+       }
+   }
+  
+
+}
