@@ -1,13 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import Login from "../Components/Login/Login"
-import Navbar from "../Components/Navbar/Navbar";
-import Header from "../Components/Header/Header";
+import Home from "../Components/Home/Home";
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Header />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
