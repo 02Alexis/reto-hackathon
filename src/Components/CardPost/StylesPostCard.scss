@@ -1,0 +1,201 @@
+@import '../../main.scss';
+
+.post {
+
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: #3e3e3e;
+        margin-top: 1.5rem;
+        padding: 1rem 1.5rem;
+        border-radius: 9px;
+
+
+        .person {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.361);
+            padding-bottom: 1rem;
+
+            .nameUser {
+                display: flex;
+                flex-direction: row;
+
+
+                img {
+                    width: 3.3rem;
+                    height: 3.3rem;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+
+                .User {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin-left: 1rem;
+
+                    .name {
+                        color: #fff;
+                        font-weight: 700;
+                        font-size: 1rem;
+                    }
+
+                    .usuario {
+                        color: #6c757d;
+                        font-size: .8rem;
+                        font-weight: 500;
+
+                    }
+                }
+
+            }
+
+            .time {
+                color: #fff;
+                font-size: .9rem;
+                font-weight: 400;
+            }
+        }
+
+        .infoPublicacion {
+            margin-top: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.361);
+            padding-bottom: 1rem;
+
+            p {
+                color: #aaa;
+                font-size: .85rem;
+                margin-bottom: 1rem;
+                line-height: 1rem;
+                letter-spacing: 0.5px;
+            }
+
+            .containerImages {
+                display: flex;
+                justify-content: space-between;
+                gap: 1%;
+            }
+
+            .imageIzquierda {
+                display: flex;
+                width: 69%;
+                object-fit: cover;
+                border-radius: 4px;
+
+            }
+
+            .imageDerecha {
+                display: flex;
+                flex-direction: column;
+                gap: .25rem;
+
+                img {
+                    border-radius: 4px;
+                    width: 15em;
+                    height: 15em;
+                    object-fit: cover;
+                }
+
+            }
+        }
+
+        .iconos {
+            display: flex;
+            margin: 1.1rem 0;
+            padding-bottom: 1.1rem;
+            gap: 5%;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.361);
+            color: #6c757d;
+
+
+            .contenido {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                gap: 10%;
+
+                span {
+                    font-size: .9rem;
+                }
+
+                &:hover {
+                    color: #606060;
+                    transition: .1s ease-in-out;
+                }
+
+                .corazon {
+                    color: #de4437;
+                    font-size: 1.3rem;
+                    transition: .1s ease-in-out;
+
+                    &:hover {
+                        color: #a93025;
+                        transition: .1s ease-in-out;
+                    }
+                }
+
+                .comenandsocial {
+                    font-size: 1.2rem;
+                    transition: .1s ease-in-out;
+                }
+            }
+        }
+
+        .comment {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            gap: 10%;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.361);
+
+            img {
+               
+                min-width: 3.3rem;
+                height: 3.3rem;
+                object-fit: cover;
+                border-radius: 50%;
+            
+            }
+
+            .userComment {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: .1rem;
+                color: #fff;
+                font-size: .95rem;
+            }
+
+            p {
+                color: #b7b9cc;
+                font-size: .8rem;
+                line-height: .8rem;
+            }
+        }
+        .textarea{
+            margin-top: 1rem;
+            textarea{
+                background-color: transparent;
+                border: none;
+                width: 100%;
+                padding-bottom: .1rem;
+                color:rgba(255, 255, 255, 0.978);
+                
+                &:focus{
+                    outline: none;
+                }
+                &::placeholder{
+                    font-size: .9rem;
+                    color: rgba(255,255,255,.6) ;
+                }
+            }
+        }
+    }
+}

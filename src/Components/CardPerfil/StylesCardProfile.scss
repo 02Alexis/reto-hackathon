@@ -3,11 +3,11 @@
 .card {
     display: flex;
     flex-direction: column;
-    width: 18%;
     background-color: #3e3e3e;
-    border-radius: 4px;
+    min-width: 23%;
+    border-radius: 9px;
     border: 1px solid rgba(255, 255, 255, .5);
-    height: 50%;
+    height: 100%;
     figure {
         display: flex;
         justify-content: center;
