@@ -30,7 +30,7 @@
 
 .navbar li {
   display: inline-block;
-  margin-right: 1rem;
+  // margin-right: 1rem;
 }
 
 .navbar li a {
@@ -38,7 +38,17 @@
   font-weight: bold;
   text-decoration: none;
   color: white;
+  span {
+    margin-right: 10px;
+  }
   @media (max-width: 640px) {
     color: black;
   }
+}
+.navbar-separator {
+  width: 10px; // Ajusta el ancho del separador entre grupos
+}
+
+.navbar-icons {
+  display: flex;
 }
