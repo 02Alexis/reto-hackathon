@@ -11,9 +11,14 @@ import Stack from "@mui/material/Stack";
 
 export default function CreatePost() {
   const [value, setValue] = React.useState(0);
+  const [inputValue, setInputValue] = React.useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
   };
 
   return (
@@ -25,16 +30,44 @@ export default function CreatePost() {
     >
       <Box sx={{ width: "100%", bgcolor: "#3e3e3e" }} className="card__post">
         <Tabs value={value} onChange={handleChange} centered sx={{ gap: 100 }}>
-          <Tab label="Item One" sx={{ color: "#fff" }} />
-          <Tab label="Item Two" sx={{ color: "#fff" }} />
-          <Tab label="Item Three" sx={{ color: "#fff" }} />
+          <Tab label="Share an update" sx={{ color: "#fff" }} />
+          <Tab label="Upload a photo" sx={{ color: "#fff" }} />
+          <Tab label="Write an article" sx={{ color: "#fff" }} />
         </Tabs>
       </Box>
+
       <div className="card__info">
         <div>
-          <span className="text">write a article...</span>
+          {value === 0 && (
+            <input
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              placeholder="Write something..."
+              className="custom-input"
+            />
+          )}
+          {value === 1 && (
+            <input
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              placeholder="Another input..."
+              className="custom-input"
+            />
+          )}
+          {value === 2 && (
+            <input
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              placeholder="Yet another input..."
+              className="custom-input"
+            />
+          )}
         </div>
       </div>
+
       <div
         className="card__buttons"
         style={{

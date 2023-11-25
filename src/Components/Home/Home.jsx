@@ -3,7 +3,7 @@ import CardPost from "../CardPost/CardPost";
 import CreatePost from "../CreatePost/CreatePost";
 import Friends from "../Friends/Friends";
 import Header from "../Header/Header";
-import './StylesHome.scss';
+import "./StylesHome.scss";
 
 const Home = () => {
   return (
@@ -15,7 +15,7 @@ const Home = () => {
           <CreatePost />
           <CardPost />
         </div>
-        <Friends/>
+        <Friends />
       </div>
     </div>
   );

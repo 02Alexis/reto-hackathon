@@ -83,6 +83,25 @@ const StyledMenu = styled((props) => (
 }));
 
 const Navbar = ({ handleMouseEnter, handleMouseLeave, onClose }) => {
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement(
+      {
+        pageLanguage: "en",
+        autoDisplay: false,
+      },
+      "google_translate_element"
+    );
+  };
+  React.useEffect(() => {
+    var addScript = document.createElement("script");
+    addScript.setAttribute(
+      "src",
+      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    );
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
 
@@ -226,11 +245,11 @@ const Navbar = ({ handleMouseEnter, handleMouseLeave, onClose }) => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem>
           <Avatar /> Name user
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
+        <MenuItem component={Link} to="/profile" onClick={handleClose}>
           <ListItemIcon>
             <BiSolidEdit />
           </ListItemIcon>
@@ -242,13 +261,14 @@ const Navbar = ({ handleMouseEnter, handleMouseLeave, onClose }) => {
           </ListItemIcon>
           Edit Profile
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem component={Link} to="/registro" onClick={handleClose}>
           <ListItemIcon>
             <LuLogOut />
           </ListItemIcon>
           Logout
         </MenuItem>
       </Menu>
+      {/* <div id="google_translate_element"></div> */}
     </ul>
   );
 };
