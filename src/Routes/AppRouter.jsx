@@ -1,7 +1,7 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Login from "../Components/Login/Login"
-import Perfil from "../Components/Perfil/Perfil"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "../Components/Register/Register";
+import Perfil from "../Components/Perfil/Perfil";
+import Login from "../Components/Login/Login";
 import Home from "../Components/Home/Home";
 
 const AppRouter = () => {
