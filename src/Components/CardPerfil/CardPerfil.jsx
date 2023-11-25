@@ -1,29 +1,39 @@
-import './StylesCardProfile.scss'
+import "./StylesCardProfile.scss";
+
+import { motion } from "framer-motion";
+
 const CardPerfil = () => {
   return (
-    <div className="cardPerfil">
-      
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      className="cardPerfil"
+    >
       <figure>
-        <img src="https://media.istockphoto.com/id/1406197730/es/foto/retrato-de-un-joven-indio-guapo.jpg?s=612x612&w=0&k=20&c=zmBBGk9nsf8NvLXrr2wm0ML70HobYQmVDU43sHNdsYQ=" alt="" />
+        <img
+          src="https://media.istockphoto.com/id/1406197730/es/foto/retrato-de-un-joven-indio-guapo.jpg?s=612x612&w=0&k=20&c=zmBBGk9nsf8NvLXrr2wm0ML70HobYQmVDU43sHNdsYQ="
+          alt=""
+        />
       </figure>
 
-      <div className='cardPerfil__name'>
-        <span className='name'>Gurdeep Osahan</span>
-        <span className='role'>UI / UX Designer</span>
+      <div className="cardPerfil__name">
+        <span className="name">Gurdeep Osahan</span>
+        <span className="role">UI / UX Designer</span>
       </div>
-      <div className='cardPerfil__info'>
+      <div className="cardPerfil__info">
         <div>
-          <span className='number'>358</span>
-          <span className='views'>Connections</span>
+          <span className="number">358</span>
+          <span className="views">Connections</span>
         </div>
         <div>
-          <span className='number'>85</span>
-          <span className='views'>Views</span>
+          <span className="number">85</span>
+          <span className="views">Views</span>
         </div>
       </div>
       <button>View my profile</button>
-    </div>
-  )
-}
+    </motion.div>
+  );
+};
 
-export default CardPerfil
+export default CardPerfil;

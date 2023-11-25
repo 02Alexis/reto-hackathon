@@ -1,4 +1,6 @@
-import './StylesCardsFriends.scss'
+import "./StylesCardsFriends.scss";
+
+import { motion } from "framer-motion";
 
 const users = [
   {
@@ -51,33 +53,34 @@ const users = [
     usuario: "@sofi86",
     imagen: "https://placekitten.com/203/300",
   },
-]
+];
 
-console.log(users)
+console.log(users);
 const Friends = () => {
   return (
-    <div className='cardFriends'>
-      <div className='destacadas'>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      className="cardFriends"
+    >
+      <div className="destacadas">
         <p>Personas Destacadas</p>
       </div>
-      {
-        users.map((user, index) => (
-          <div className="cardFriends__info" key={index}>
-            <div className='usuario'>
-              <img src={user.imagen} alt="" />
-              <div className='infoUsuario'>
-                <span className='name'>{user.nombre}</span>
-                <span className='nameUsuario'>{user.usuario}</span>
-              </div>
+      {users.map((user, index) => (
+        <div className="cardFriends__info" key={index}>
+          <div className="usuario">
+            <img src={user.imagen} alt="" />
+            <div className="infoUsuario">
+              <span className="name">{user.nombre}</span>
+              <span className="nameUsuario">{user.usuario}</span>
             </div>
-            <button>
-              Connent
-            </button>
           </div>
-        ))
-      }
-    </div>
-  )
-}
+          <button>Connent</button>
+        </div>
+      ))}
+    </motion.div>
+  );
+};
 
-export default Friends
+export default Friends;
