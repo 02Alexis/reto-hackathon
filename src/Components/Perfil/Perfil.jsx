@@ -1,6 +1,7 @@
 import CardPerfil from "../CardPerfil/CardPerfil"
 import CardPost from "../CardPost/CardPost";
 import Friends from "../Friends/Friends"
+import Header from "../Header/Header";
 import './StylesPerfil.scss';
 
 
@@ -11,7 +12,10 @@ const Perfil = () => {
 
 
   return (
+    <>
+     <Header />
     <div className="container">
+     
       <CardPerfil />
       <div className="container__about">
         <div className="info">
@@ -39,6 +43,8 @@ const Perfil = () => {
 
       <Friends />
     </div>
+    </>
+    
   );
 }
 

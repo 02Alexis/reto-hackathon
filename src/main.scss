@@ -1,10 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
 
-$color-primary: #01140E;
+$color-primary: #011407;
 $color-secondary: #CDF273;
 $color-terciary: #E7EADE;
+:root {
+  --color-primary: rgb(4, 52, 24);
+  --color-secondary: #cdf273;
+  --color-terciary: #e7eade;
+}
 
+html,
+body {
+  font-family: "Ubuntu", sans-serif;
+  height: 100%;
+  background: #161616;
+}
 
 
 * {
@@ -13,4 +24,10 @@ $color-terciary: #E7EADE;
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
    
+}
+.social-media-fixed {
+  position: fixed;
+  bottom: 0px;
+  left: 120px;
+  //   z-index: 9999;
 }
