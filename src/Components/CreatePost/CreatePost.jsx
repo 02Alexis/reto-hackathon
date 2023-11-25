@@ -6,8 +6,8 @@ import Tabs from "@mui/material/Tabs";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 
-import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
 export default function CreatePost() {
   const [value, setValue] = React.useState(0);
