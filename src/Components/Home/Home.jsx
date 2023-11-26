@@ -5,7 +5,9 @@ import Friends from "../Friends/Friends";
 import Header from "../Header/Header";
 import "./StylesHome.scss";
 
+
 const Home = () => {
+
   return (
     <div className="home">
       <Header />
