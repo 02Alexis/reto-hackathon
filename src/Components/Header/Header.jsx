@@ -87,7 +87,7 @@ const Header = () => {
   return (
     <header className="custom-header">
       <div className="custom-header-container">
-        <Link to="/" className="custom-logo">
+        <Link to="/home" className="custom-logo">
           <motion.div whileHover={{ y: -2 }}>
             <img src={Logo} className="custom-logo-icon" />
           </motion.div>

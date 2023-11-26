@@ -83,25 +83,6 @@ const StyledMenu = styled((props) => (
 }));
 
 const Navbar = ({ handleMouseEnter, handleMouseLeave, onClose }) => {
-  const googleTranslateElementInit = () => {
-    new window.google.translate.TranslateElement(
-      {
-        pageLanguage: "en",
-        autoDisplay: false,
-      },
-      "google_translate_element"
-    );
-  };
-  React.useEffect(() => {
-    var addScript = document.createElement("script");
-    addScript.setAttribute(
-      "src",
-      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-    );
-    document.body.appendChild(addScript);
-    window.googleTranslateElementInit = googleTranslateElementInit;
-  }, []);
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
 
@@ -268,7 +249,6 @@ const Navbar = ({ handleMouseEnter, handleMouseLeave, onClose }) => {
           Logout
         </MenuItem>
       </Menu>
-      {/* <div id="google_translate_element"></div> */}
     </ul>
   );
 };
