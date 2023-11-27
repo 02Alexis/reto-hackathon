@@ -9,6 +9,9 @@
   gap: 10px;
   height: 100vh;
   background-color: var(--color-primary);
+  span {
+    color: white;
+  }
 
   &__img {
     width: 15%;

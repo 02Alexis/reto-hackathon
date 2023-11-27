@@ -2,7 +2,8 @@ import "./Navbar.scss";
 
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 import {
   LuMessageSquare,
   LuFileText,
@@ -81,6 +82,28 @@ const Navbar = ({ handleMouseEnter, handleMouseLeave, onClose }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
 
+  const navigate = useNavigate();
+
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement(
+      {
+        pageLanguage: "en",
+        autoDisplay: false,
+      },
+      "google_translate_element"
+    );
+  };
+
+  React.useEffect(() => {
+    var addScript = document.createElement("script");
+    addScript.setAttribute(
+      "src",
+      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    );
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
   const open = Boolean(anchorEl);
   const open2 = Boolean(anchorEl2);
 
@@ -96,6 +119,11 @@ const Navbar = ({ handleMouseEnter, handleMouseLeave, onClose }) => {
   };
   const handleClose2 = () => {
     setAnchorEl2(null);
+  };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/");
   };
 
   return (
@@ -237,13 +265,14 @@ const Navbar = ({ handleMouseEnter, handleMouseLeave, onClose }) => {
           </ListItemIcon>
           Edit Profile
         </MenuItem>
-        <MenuItem component={Link} to="/registro" onClick={handleClose}>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <LuLogOut />
           </ListItemIcon>
           Logout
         </MenuItem>
       </Menu>
+      <div id="google_translate_element"></div>
     </ul>
   );
 };
