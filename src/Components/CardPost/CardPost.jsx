@@ -3,100 +3,88 @@ import { CgHeart } from "react-icons/cg";
 import { GoComment } from "react-icons/go";
 import { IoShareSocialOutline } from "react-icons/io5";
 import './StylesPostCard.scss';
+import { useContext, useEffect, useState } from "react";
+import { getData } from "../../services/getData";
+import { AppContext } from "../../Routes/AppRouter";
+
+
+
 const CardPost = () => {
-    const info = [
-        {
-            nombre: "Juan",
-            usuario: "@juanito",
-            imagen: "https://placekitten.com/200/300",
-            post: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam totam, magnam natus dicta molestiae eveniet unde dignissimos laboriosam veniam accusamus rerum maiores excepturi recusandae doloremque obcaecati sed quidem voluptatem voluptates.'
-        },
-        {
-            nombre: "María",
-            usuario: "@maria22",
-            imagen: "https://placebeard.it/200x300",
-            post: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam totam, magnam natus dicta molestiae eveniet unde dignissimos laboriosam veniam accusamus rerum maiores excepturi recusandae doloremque obcaecati sed quidem voluptatem voluptates.'
-        },
-        {
-            nombre: "Carlos",
-            usuario: "@carlitos",
-            imagen: "https://placecorgi.com/200/300",
-            post: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam totam, magnam natus dicta molestiae eveniet unde dignissimos laboriosam veniam accusamus rerum maiores excepturi recusandae doloremque obcaecati sed quidem voluptatem voluptates.'
 
-        },
-        {
-            nombre: "Ana",
-            usuario: "@anita",
-            imagen: "https://placekitten.com/201/301",
-            post: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam totam, magnam natus dicta molestiae eveniet unde dignissimos laboriosam veniam accusamus rerum maiores excepturi recusandae doloremque obcaecati sed quidem voluptatem voluptates.'
+    const [post, setPost] = useState([]);
+    const { token } = useContext(AppContext);
+    console.log(token)
 
-        },
-        {
-            nombre: "Luis",
-            usuario: "@luisito",
-            imagen: "https://placebeard.it/201x301",
-            post: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam totam, magnam natus dicta molestiae eveniet unde dignissimos laboriosam veniam accusamus rerum maiores excepturi recusandae doloremque obcaecati sed quidem voluptatem voluptates.'
+    // const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MDEwNTk5NTAsImV4cCI6MjQ0OTUyNjMyOTIwODE2MH0.ONUEKtfDVsgGu58gMyctP60EPM0lTeHKXTsnuN_NJQs';
 
-        },
-        {
-            nombre: "Laura",
-            usuario: "@laurita",
-            imagen: "https://placecorgi.com/201/301",
-            post: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam totam, magnam natus dicta molestiae eveniet unde dignissimos laboriosam veniam accusamus rerum maiores excepturi recusandae doloremque obcaecati sed quidem voluptatem voluptates.'
 
-        },
-        {
-            nombre: "Pedro",
-            usuario: "@pedrito",
-            imagen: "https://placekitten.com/202/302",
-            post: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam totam, magnam natus dicta molestiae eveniet unde dignissimos laboriosam veniam accusamus rerum maiores excepturi recusandae doloremque obcaecati sed quidem voluptatem voluptates.'
+    useEffect(() => {
+        // const getInfoUserLocalStorage = JSON.parse(localStorage.getItem('UserPerfil'));
+        // console.log(typeof (getInfoUserLocalStorage));
+        const tokenToLocal = localStorage.getItem('token')
+        getData('publication', tokenToLocal)
+            .then((response) => {
+                if (!post.length) {
+                    setPost(response);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
 
-        },
-        {
-            nombre: "Isabel",
-            usuario: "@isabelita",
-            imagen: "https://placebeard.it/202x302",
-            post: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam totam, magnam natus dicta molestiae eveniet unde dignissimos laboriosam veniam accusamus rerum maiores excepturi recusandae doloremque obcaecati sed quidem voluptatem voluptates.'
+    function getRandomHour() {
+        // Genera un número aleatorio entre 0 y 23 para las horas
+        const randomHour = Math.floor(Math.random() * 24);
 
-        },
-        {
-            nombre: "Miguel",
-            usuario: "@miguelito",
-            imagen: "https://placecorgi.com/203/300",
-            post: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam totam, magnam natus dicta molestiae eveniet unde dignissimos laboriosam veniam accusamus rerum maiores excepturi recusandae doloremque obcaecati sed quidem voluptatem voluptates.'
+        // Genera un número aleatorio entre 0 y 59 para los minutos
+        const randomMinute = Math.floor(Math.random() * 60);
 
-        },
-        {
-            nombre: "Sofía",
-            usuario: "@sofi86",
-            imagen: "https://placekitten.com/203/300",
-            post: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam totam, magnam natus dicta molestiae eveniet unde dignissimos laboriosam veniam accusamus rerum maiores excepturi recusandae doloremque obcaecati sed quidem voluptatem voluptates.'
+        // Formatea las horas y minutos con dos dígitos cada uno
+        const formattedHour = String(randomHour).padStart(2, '0');
+        const formattedMinute = String(randomMinute).padStart(2, '0');
 
-        },
-    ]
+        // Devuelve la hora en formato HH:mm
+        return `${formattedHour}:${formattedMinute}`;
+    }
+
+    // console.log(typeof (post[0].file));
+    console.log(post)
+
     return (
         <div className="post">
+            {/* <div className="pdf">
+                <object data={pdfUrl} type="application/pdf"></object>
+            </div> */}
+
+
             {
-                info.map((user, index) => (
+                post.map((user, index) => (
                     <div className="post__container" key={index}>
                         <div className="person">
                             <div className="nameUser">
-                                <img src={user.imagen} alt={user.nombre} />
+                                <img src={user.user.image} alt={user.nombre} />
                                 <div className="User">
-                                    <span className="name">{user.nombre}</span>
-                                    <span className="usuario">{user.usuario}</span>
+                                    <span className="name">{user.user.name}     {user.user.lastName}</span>
+                                    <span className="usuario">{user.user.role}</span>
                                 </div>
                             </div>
-                            <span className="time">3 Horas</span>
+                            <span className="time">{getRandomHour()} Horas</span>
                         </div>
                         <div className="infoPublicacion">
-                            <p>{user.post}</p>
+                            <p>{user.content}</p>
                             <div className="containerImages">
-                                <img className="imageIzquierda" src={user.imagen} alt="" />
-                                <div className="imageDerecha">
+
+                                {user.file?.endsWith('.pdf') ? (
+                                    <div className="pdf">
+                                        <object data={user.file} type="application/pdf"></object>
+                                    </div>
+                                ) : (<img className="imageIzquierda" src={user.file} alt="" />)}
+
+                                {/* <div className="imageDerecha">
                                     <img src={user.imagen} alt="" />
                                     <img src={user.imagen} alt="" />
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="iconos">
@@ -114,13 +102,13 @@ const CardPost = () => {
                             </div>
                         </div>
                         <div className="comment">
-                            <img src={user.imagen} alt="" />
-                            <div>
+                            <img src={user.user.image} alt="" />
+                            <div style={{ display: 'flex', width: '100%', flexDirection: 'column' }}>
                                 <div className="userComment">
-                                    <span style={{fontWeight:'700'}}>{user.nombre}</span>
+                                    <span style={{ fontWeight: '700' }}>{user.user.name}</span>
                                     <span>2 min</span>
                                 </div>
-                                <p>{user.post}</p>
+                                <p>{user.comments[index]?.content}</p>
                             </div>
                         </div>
                         <div className="textarea">

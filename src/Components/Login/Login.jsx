@@ -11,7 +11,8 @@ import { postData } from '../../services/postData';
 
 const Login = () => {
 
-  const { usuario, setUsuario } = useContext(AppContext);
+  const { setUsuario, setToken } = useContext(AppContext);
+
   const navigate = useNavigate();
 
   const {
@@ -29,9 +30,11 @@ const Login = () => {
       if (response) {
 
         setUsuario(formData);
-      localStorage.setItem("token", response.token)
-      
-    console.log(usuario)
+        setToken(response.token)
+        localStorage.setItem("token", response.token)
+        localStorage.setItem('UserPerfil', JSON.stringify(formData))
+
+
         navigate('/home');
       } else {
 

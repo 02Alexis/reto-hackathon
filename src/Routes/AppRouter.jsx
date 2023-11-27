@@ -10,24 +10,34 @@ import Home from "../Components/Home/Home";
 export const AppContext = createContext({});
 
 const AppRouter = () => {
+ 
   const [usuario, setUsuario] = useState({});
+  const [token, setToken] = useState('');
+
+
 
   return (
-    <AppContext.Provider
-      value={{
-        usuario,
-        setUsuario
-      }}
-    >
+
+    <>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/profile" element={<Perfil />} />
-          <Route path="/registro" element={<Register />} />
-          <Route path="/home" element={<Home />} />
-        </Routes>
+        <AppContext.Provider
+          value={{
+            usuario,
+            setUsuario,
+            token,
+            setToken
+          }}
+        >
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/profile" element={<Perfil />} />
+            <Route path="/registro" element={<Register />} />
+            <Route path="/home" element={<Home />} />
+          </Routes>
+        </AppContext.Provider>
       </BrowserRouter>
-    </AppContext.Provider>
+    </>
+
   );
 
 };

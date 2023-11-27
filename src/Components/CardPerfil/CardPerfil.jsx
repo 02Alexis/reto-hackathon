@@ -1,8 +1,36 @@
+import { useContext, useEffect, useState } from "react";
 import "./StylesCardProfile.scss";
-
 import { motion } from "framer-motion";
+import { AppContext } from "../../Routes/AppRouter";
+import { getData } from "../../services/getData";
 
 const CardPerfil = () => {
+
+  const [user, setUser] = useState([]);
+  const {token, usuario, setToken} = useContext(AppContext);
+
+
+   
+    useEffect(() => {
+      const getInfoUserLocalStorage = JSON.parse(localStorage.getItem('UserPerfil'));
+      console.log(typeof(getInfoUserLocalStorage));
+      const tokenToLocal = localStorage.getItem('token')
+        getData(`user/email/${getInfoUserLocalStorage.email}`, tokenToLocal)
+            .then((response) => {
+                if (!user.length) {
+                    setUser(response);
+                    // localStorage.setItem('UserPerfil', JSON.stringify(response))
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+    
+    
+    // console.log(getInfoUserLocalStorage);
+    console.log(user);
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.5 }}
@@ -12,22 +40,22 @@ const CardPerfil = () => {
     >
       <figure>
         <img
-          src="https://media.istockphoto.com/id/1406197730/es/foto/retrato-de-un-joven-indio-guapo.jpg?s=612x612&w=0&k=20&c=zmBBGk9nsf8NvLXrr2wm0ML70HobYQmVDU43sHNdsYQ="
+          src={user.image}
           alt=""
         />
       </figure>
 
       <div className="cardPerfil__name">
-        <span className="name">Gurdeep Osahan</span>
-        <span className="role">UI / UX Designer</span>
+        <span className="name">{user.name}</span>
+        <span className="role">{user.role}</span>
       </div>
       <div className="cardPerfil__info">
         <div>
-          <span className="number">358</span>
+          <span className="number">{Math.floor(Math.random() * 500)}</span>
           <span className="views">Connections</span>
         </div>
         <div>
-          <span className="number">85</span>
+          <span className="number">{Math.floor(Math.random() * 500)}</span>
           <span className="views">Views</span>
         </div>
       </div>

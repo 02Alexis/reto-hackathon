@@ -2,6 +2,16 @@
 
 .post {
 
+   .pdf{
+    display: flex;
+    width: 100%;
+
+    object{
+        display: flex;
+        width: 100%;
+        height: 60vh;
+    }
+   }
 
     &__container {
         display: flex;
@@ -82,7 +92,7 @@
 
             .imageIzquierda {
                 display: flex;
-                width: 69%;
+                width: 100%;
                 object-fit: cover;
                 border-radius: 4px;
 
@@ -150,27 +160,28 @@
         .comment {
             display: flex;
             width: 100%;
-            justify-content: space-between;
-            gap: 10%;
+            gap: 3%;
             align-items: center;
             padding-bottom: 1rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.361);
 
             img {
-               
+
                 min-width: 3.3rem;
                 height: 3.3rem;
                 object-fit: cover;
                 border-radius: 50%;
-            
+
             }
 
             .userComment {
                 display: flex;
+                width: 100%;
                 justify-content: space-between;
                 margin-bottom: .1rem;
                 color: #fff;
                 font-size: .95rem;
+               
             }
 
             p {
@@ -179,21 +190,24 @@
                 line-height: .8rem;
             }
         }
-        .textarea{
+
+        .textarea {
             margin-top: 1rem;
-            textarea{
+
+            textarea {
                 background-color: transparent;
                 border: none;
                 width: 100%;
                 padding-bottom: .1rem;
-                color:rgba(255, 255, 255, 0.978);
-                
-                &:focus{
+                color: rgba(255, 255, 255, 0.978);
+
+                &:focus {
                     outline: none;
                 }
-                &::placeholder{
+
+                &::placeholder {
                     font-size: .9rem;
-                    color: rgba(255,255,255,.6) ;
+                    color: rgba(255, 255, 255, .6);
                 }
             }
         }

@@ -1,6 +1,6 @@
 const fileUpLoad = async (image) => {
-  const cloudName = "drrpq9vlk";
-  const presetName = "reto-hackethon";
+  const cloudName = "dpudpgfv6";
+  const presetName = "rappi-redux";
   const urlCloudinary = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
 
   const formData = new FormData();
@@ -19,11 +19,13 @@ const fileUpLoad = async (image) => {
     }
 
     const data = await response.json();
+    console.log('yesiddata',data);
+    console.log(data.secure_url);
     return data.secure_url;
   } catch (error) {
     console.log(error);
     return null;
-  }
+  } 
 };
 
 export default fileUpLoad;
