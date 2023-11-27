@@ -37,15 +37,14 @@ export default function CreatePost() {
       formData.append("content", data.content);
       formData.append("country", data.country);
 
-      // if (data.files && data.files[0]) {
-      //   // const files = data.files[0];
-      //   data.files = fileUpLoadLink;
-      //   formData.append("files", data.files[0]);
-      // }
       if (data.file && data.file[0]) {
-        formData.append("files", data.file[0]);
-        const file = data.file[0];
-        data.file = file;
+        data.file = fileUpLoadLink;
+
+        const fileInfo = {
+          file: data.file[0], // Suponiendo que solo te interesa el primer archivo, ajusta según tus necesidades
+          fileUploadLink: fileUpLoadLink,
+        };
+        formData.append("files", JSON.stringify(fileInfo));
       }
 
       const response = await createPost(endpoint, data, token);
@@ -83,6 +82,7 @@ export default function CreatePost() {
               type="file"
               {...register("file")}
               className="custom-file-input"
+              multiple
             />
             <select
               {...register("country", { required: "Country is required" })}
