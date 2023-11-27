@@ -51,6 +51,8 @@ const CardPost = () => {
     // console.log(typeof (post[0].file));
     console.log(post)
 
+    const postOrder = [...post].reverse();
+
     return (
         <div className="post">
             {/* <div className="pdf">
@@ -59,7 +61,7 @@ const CardPost = () => {
 
 
             {
-                post.map((user, index) => (
+                postOrder?.map((user, index) => (
                     <div className="post__container" key={index}>
                         <div className="person">
                             <div className="nameUser">

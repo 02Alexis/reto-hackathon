@@ -27,7 +27,7 @@ const Login = () => {
 
       const response = await postData('login', formData);
 
-      if (response) {
+      if (response && response.token) {
 
         setUsuario(formData);
         setToken(response.token)

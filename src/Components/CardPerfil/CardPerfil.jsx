@@ -7,18 +7,20 @@ import { getData } from "../../services/getData";
 const CardPerfil = () => {
 
   const [user, setUser] = useState([]);
-  const {token, usuario, setToken} = useContext(AppContext);
+  const {setUsuario} = useContext(AppContext);
 
 
    
     useEffect(() => {
       const getInfoUserLocalStorage = JSON.parse(localStorage.getItem('UserPerfil'));
       console.log(typeof(getInfoUserLocalStorage));
-      const tokenToLocal = localStorage.getItem('token')
+      const tokenToLocal = localStorage.getItem('token');
+
         getData(`user/email/${getInfoUserLocalStorage.email}`, tokenToLocal)
             .then((response) => {
                 if (!user.length) {
                     setUser(response);
+                    setUsuario(response)
                     // localStorage.setItem('UserPerfil', JSON.stringify(response))
                 }
             })

@@ -17,9 +17,16 @@ import Select from "@mui/material/Select";
 
 import { createPost } from "../../services/postData";
 import fileUpLoad from "../../services/fileUpload";
+import { AppContext } from "../../Routes/AppRouter";
 
 export default function CreatePost() {
   const [value, setValueTa] = React.useState(0);
+
+  const {usuario} = React.useContext(AppContext);
+  console.log(usuario)
+
+
+
   const {
     register,
     handleSubmit,
@@ -30,13 +37,15 @@ export default function CreatePost() {
     setValueTa(newValue);
   };
 
+
   const handleFormSubmit = async (data) => {
     const token = localStorage.getItem("token");
     const fileUpLoadLink = await fileUpLoad(data.file[0]);
-    console.log("tu link: ", fileUpLoadLink);
-
+    // console.log("tu link: ", fileUpLoadLink);
+    window.location.reload();
     try {
-      const endpoint = "publication/1";
+      
+      const endpoint = `publication/${usuario?.idUser}`;
 
       const formData = new FormData();
       formData.append("content", data.content);
@@ -46,7 +55,7 @@ export default function CreatePost() {
         data.file = fileUpLoadLink;
 
         const fileInfo = {
-          file: data.file[0], // Suponiendo que solo te interesa el primer archivo, ajusta según tus necesidades
+          file: data.file[0], 
           fileUploadLink: fileUpLoadLink,
         };
         formData.append("files", JSON.stringify(fileInfo));
@@ -114,6 +123,7 @@ export default function CreatePost() {
 
           {/* Sección derecha para los demás botones */}
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            
             <Stack spacing={1} direction="row">
               {/* <Button
                 variant="outlined"
