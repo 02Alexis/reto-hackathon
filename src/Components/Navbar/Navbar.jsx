@@ -28,11 +28,6 @@ import Button from "@mui/material/Button";
 
 const links = [
   {
-    route: "/",
-    icon: <LuLuggage />,
-    label: "Jobs",
-  },
-  {
     route: "#connect",
     icon: <LuUsers />,
     label: "Conection",
