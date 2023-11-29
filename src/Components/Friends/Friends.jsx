@@ -55,7 +55,7 @@ const users = [
   },
 ];
 
-console.log(users);
+// console.log(users);
 const Friends = () => {
   return (
     <motion.div

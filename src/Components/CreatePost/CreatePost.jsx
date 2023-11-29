@@ -23,7 +23,7 @@ export default function CreatePost() {
   const [value, setValueTa] = React.useState(0);
 
   const { usuario } = React.useContext(AppContext);
-  console.log(usuario);
+  // console.log(usuario);
 
   const {
     register,
@@ -59,7 +59,7 @@ export default function CreatePost() {
 
       const response = await createPost(endpoint, data, token);
 
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       console.error(error);
     }

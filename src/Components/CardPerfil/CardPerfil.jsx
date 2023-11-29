@@ -5,33 +5,31 @@ import { AppContext } from "../../Routes/AppRouter";
 import { getData } from "../../services/getData";
 
 const CardPerfil = () => {
-
   const [user, setUser] = useState([]);
-  const {setUsuario} = useContext(AppContext);
+  const { setUsuario } = useContext(AppContext);
 
+  useEffect(() => {
+    const getInfoUserLocalStorage = JSON.parse(
+      localStorage.getItem("UserPerfil")
+    );
+    // console.log(typeof(getInfoUserLocalStorage));
+    const tokenToLocal = localStorage.getItem("token");
 
-   
-    useEffect(() => {
-      const getInfoUserLocalStorage = JSON.parse(localStorage.getItem('UserPerfil'));
-      console.log(typeof(getInfoUserLocalStorage));
-      const tokenToLocal = localStorage.getItem('token');
+    getData(`user/email/${getInfoUserLocalStorage.email}`, tokenToLocal)
+      .then((response) => {
+        if (!user.length) {
+          setUser(response);
+          setUsuario(response);
+          // localStorage.setItem('UserPerfil', JSON.stringify(response))
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-        getData(`user/email/${getInfoUserLocalStorage.email}`, tokenToLocal)
-            .then((response) => {
-                if (!user.length) {
-                    setUser(response);
-                    setUsuario(response)
-                    // localStorage.setItem('UserPerfil', JSON.stringify(response))
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, []);
-    
-    
-    // console.log(getInfoUserLocalStorage);
-    console.log(user);
+  // console.log(getInfoUserLocalStorage);
+  // console.log(user);
 
   return (
     <motion.div
@@ -41,10 +39,7 @@ const CardPerfil = () => {
       className="cardPerfil"
     >
       <figure>
-        <img
-          src={user.image}
-          alt=""
-        />
+        <img src={user.image} alt="" />
       </figure>
 
       <div className="cardPerfil__name">
